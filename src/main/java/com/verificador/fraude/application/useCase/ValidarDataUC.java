@@ -8,8 +8,6 @@ import java.util.List;
 
 public class ValidarDataUC {
 
-    double pontuacaoData = 0;
-
     private static final List<DateTimeFormatter> FORMATOS_DATA = Arrays.asList(
             DateTimeFormatter.ofPattern("dd-MM-yyyy"),
             DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -33,7 +31,4 @@ public class ValidarDataUC {
         return false;
     }
 
-//    public double getPontuacaoData() {
-//        return pontuacaoData;
-//    }
 }

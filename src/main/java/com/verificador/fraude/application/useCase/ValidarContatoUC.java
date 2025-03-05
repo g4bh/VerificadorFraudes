@@ -4,8 +4,6 @@ import static com.verificador.fraude.domain.constants.Constants.*;
 
 public class ValidarContatoUC {
 
-    double pontuacaoContato;
-
     public boolean validarTelefone(String telefone) {
         if (telefone == null) return false;
 

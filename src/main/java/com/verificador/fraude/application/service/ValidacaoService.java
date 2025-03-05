@@ -4,6 +4,7 @@ package com.verificador.fraude.application.service;
 import com.verificador.fraude.adapter.api.dto.DadosPessoaisDTO;
 import com.verificador.fraude.application.useCase.ValidarContatoUC;
 import com.verificador.fraude.application.useCase.ValidarDataUC;
+import com.verificador.fraude.application.useCase.ValidarEnderecoUC;
 import com.verificador.fraude.application.useCase.ValidarIdentidadedUC;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,11 @@ public class ValidacaoService {
 
         ValidarContatoUC validarContato = new ValidarContatoUC();
         if (!validarContato.validarEmail(dadoPessoais.getEmail()) || (!validarContato.validarTelefone(dadoPessoais.getTelefone()))){
+            return "Grau de confiabilidade: 0";
+        }
+
+        ValidarEnderecoUC validarEndereco = new ValidarEnderecoUC();
+        if (!validarEndereco.validarEndereco(dadoPessoais.getEndereco())){
             return "Grau de confiabilidade: 0";
         }
 
