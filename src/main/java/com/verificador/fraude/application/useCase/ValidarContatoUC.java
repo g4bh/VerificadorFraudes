@@ -6,23 +6,18 @@ public class ValidarContatoUC {
 
     double pontuacaoContato;
 
-    public void validarTelefone(String telefone){
-        if (telefone.startsWith("55")){
-            if (!validaDDD(telefone)) { pontuacaoContato = 0; return;}
-            if (!validaDigitos(telefone)) {{ pontuacaoContato = 0;}}
-        }
-        else {
-            pontuacaoContato = 0;
-        }
+    public boolean validarTelefone(String telefone) {
+        if (telefone == null) return false;
+
+        telefone = telefone.replaceAll("\\D", "");
+
+        if (!validaDigitos(telefone)) return false;
+
+        return telefone.length() == 11 && validaDDD(telefone);
     }
 
-    public void validarEmail(String email){
-        if(email.matches(REGEX_EMAIL)){
-            pontuacaoContato += 1;
-        }else {
-            pontuacaoContato = 0;
-        }
-
+    public boolean validarEmail(String email){
+        return email != null && email.matches(REGEX_EMAIL);
     }
 
     private boolean validaDDD(String telefone){
@@ -32,10 +27,6 @@ public class ValidarContatoUC {
 
     private boolean validaDigitos(String telefone){
         return telefone.matches(REGEX_DIGITOS);
-    }
-
-    public double getPontuacao(){
-        return pontuacaoContato;
     }
 
 }

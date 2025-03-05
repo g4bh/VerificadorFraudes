@@ -15,12 +15,11 @@ public class ValidarDataUC {
             DateTimeFormatter.ofPattern("dd/MM/yyyy")
     );
 
-    public void validarData(String dataNascimento){
+    public boolean validarData(String dataNascimento){
         if (!verificaFormato(dataNascimento)){
-            pontuacaoData = 0;
-            return;
+            return false;
         }
-        pontuacaoData = 1;
+        return true;
     }
 
     private boolean verificaFormato(String dataNascimento) {
@@ -34,7 +33,7 @@ public class ValidarDataUC {
         return false;
     }
 
-    public double getPontuacaoData() {
-        return pontuacaoData;
-    }
+//    public double getPontuacaoData() {
+//        return pontuacaoData;
+//    }
 }
