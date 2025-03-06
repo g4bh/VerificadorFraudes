@@ -1,0 +1,9 @@
+com\verificador\fraude\domain\constants\Constants.class
+com\verificador\fraude\Application.class
+com\verificador\fraude\adapter\api\dto\DadosPessoaisDTO.class
+com\verificador\fraude\application\useCase\ValidarEnderecoUC.class
+com\verificador\fraude\application\useCase\ValidarContatoUC.class
+com\verificador\fraude\application\useCase\ValidarIdentidadeUC.class
+com\verificador\fraude\adapter\api\controller\AntiFraudeController.class
+com\verificador\fraude\application\service\ValidacaoService.class
+com\verificador\fraude\application\useCase\ValidarDataUC.class

@@ -1,0 +1,4 @@
+com\verificador\fraude\application\useCase\ValidarEnderecoUCTest.class
+com\verificador\fraude\application\useCase\ValidarDataUCTest.class
+com\verificador\fraude\application\useCase\ValidarIdentidadeUCTest.class
+com\verificador\fraude\application\useCase\ValidarContatoUCTest.class

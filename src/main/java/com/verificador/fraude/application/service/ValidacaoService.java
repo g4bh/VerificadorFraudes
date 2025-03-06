@@ -5,7 +5,7 @@ import com.verificador.fraude.adapter.api.dto.DadosPessoaisDTO;
 import com.verificador.fraude.application.useCase.ValidarContatoUC;
 import com.verificador.fraude.application.useCase.ValidarDataUC;
 import com.verificador.fraude.application.useCase.ValidarEnderecoUC;
-import com.verificador.fraude.application.useCase.ValidarIdentidadedUC;
+import com.verificador.fraude.application.useCase.ValidarIdentidadeUC;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -15,7 +15,7 @@ public class ValidacaoService {
 
     public String calcularPontuacaoDados(DadosPessoaisDTO dadoPessoais){
 
-        ValidarIdentidadedUC validarIdentidade = new ValidarIdentidadedUC();
+        ValidarIdentidadeUC validarIdentidade = new ValidarIdentidadeUC();
         ValidarDataUC validarData = new ValidarDataUC();
         ValidarContatoUC validarContato = new ValidarContatoUC();
         ValidarEnderecoUC validarEndereco = new ValidarEnderecoUC();
