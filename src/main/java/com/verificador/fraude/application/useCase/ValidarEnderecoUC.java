@@ -37,12 +37,8 @@ public class ValidarEnderecoUC {
             JSONArray results = jsonResponse.getJSONArray("results");
 
             if (results.length() == 0) {
-                System.out.println("Endereço não encontrado: " + endereco);
                 return false;
             }
-
-            JSONObject primeiroResultado = results.getJSONObject(0);
-            String enderecoFormatado = primeiroResultado.getString("formatted");
 
             return true;
 

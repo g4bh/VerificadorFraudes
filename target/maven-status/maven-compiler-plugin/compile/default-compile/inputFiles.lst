@@ -1,0 +1,9 @@
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\adapter\api\controller\AntiFraudeController.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\application\service\ValidacaoService.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\application\useCase\ValidarContatoUC.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\application\useCase\ValidarEnderecoUC.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\application\useCase\ValidarDataUC.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\application\useCase\ValidarIdentidadeUC.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\Application.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\domain\constants\Constants.java
+C:\Users\Gabriella S\Documents\Workspace\verificadorFraude\src\main\java\com\verificador\fraude\adapter\api\dto\DadosPessoaisDTO.java

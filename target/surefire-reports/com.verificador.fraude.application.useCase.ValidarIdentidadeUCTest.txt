@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.verificador.fraude.application.useCase.ValidarIdentidadeUCTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.618 s -- in com.verificador.fraude.application.useCase.ValidarIdentidadeUCTest

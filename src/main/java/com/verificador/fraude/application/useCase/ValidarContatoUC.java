@@ -23,7 +23,7 @@ public class ValidarContatoUC {
         return DDD.matches(REGEX_DDD);
     }
 
-    private boolean validaDigitos(String telefone){
+    public boolean validaDigitos(String telefone){
         return telefone.matches(REGEX_DIGITOS);
     }
 
