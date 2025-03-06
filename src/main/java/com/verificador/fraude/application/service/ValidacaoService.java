@@ -16,22 +16,18 @@ public class ValidacaoService {
     public String calcularPontuacaoDados(DadosPessoaisDTO dadoPessoais){
 
         ValidarIdentidadedUC validarIdentidade = new ValidarIdentidadedUC();
-        if (!validarIdentidade.validarNome(dadoPessoais.getNomeCompleto()) || (!validarIdentidade.validarNome(dadoPessoais.getNomeMae()))){
-            return "Grau de confiabilidade: 0";
-        }
-
         ValidarDataUC validarData = new ValidarDataUC();
-        if (!validarData.validarData(dadoPessoais.getDataNascimento())){
-            return "Grau de confiabilidade: 0";
-        }
-
         ValidarContatoUC validarContato = new ValidarContatoUC();
-        if (!validarContato.validarEmail(dadoPessoais.getEmail()) || (!validarContato.validarTelefone(dadoPessoais.getTelefone()))){
-            return "Grau de confiabilidade: 0";
-        }
-
         ValidarEnderecoUC validarEndereco = new ValidarEnderecoUC();
-        if (!validarEndereco.validarEndereco(dadoPessoais.getEndereco())){
+
+
+        if (!validarIdentidade.validarNome(dadoPessoais.getNomeCompleto()) ||
+                (!validarIdentidade.validarNome(dadoPessoais.getNomeMae()) ||
+                        (!validarData.validarData(dadoPessoais.getDataNascimento()) ||
+                                (!validarContato.validarEmail(dadoPessoais.getEmail()) ||
+                                        (!validarContato.validarTelefone(dadoPessoais.getTelefone()) ||
+                                                (!validarIdentidade.validarCPF(dadoPessoais.getCpf()) ||
+                                                        (!validarEndereco.validarEndereco(dadoPessoais.getEndereco())))))))){
             return "Grau de confiabilidade: 0";
         }
 
