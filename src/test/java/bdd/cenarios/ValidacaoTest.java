@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/main/resources/features/validacao.feature",
+        features = "src/test/resources/features/validacao.feature",
         glue = "bdd.cenarios"
 )
 public class ValidacaoTest {
