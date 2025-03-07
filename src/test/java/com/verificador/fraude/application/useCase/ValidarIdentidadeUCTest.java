@@ -15,10 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 public class ValidarIdentidadeUCTest {
 
-    ValidarIdentidadeUC validarIdentidade = new ValidarIdentidadeUC();
+    @Test
+    void testValidarNomeValido() {
+        assertTrue(ValidarIdentidadeUC.validarNome("João Silva"));
+    }
 
     @Test
-    void validarNomeCompletoCorretamente() {
-        assertEquals(true, validarIdentidade.validarNome("Gabriella Santos"));
+    void testValidarNomeInvalido() {
+        assertFalse(ValidarIdentidadeUC.validarNome("A"));
+        assertFalse(ValidarIdentidadeUC.validarNome("1234"));
+    }
+
+    @Test
+    void testValidarCPFValido() {
+        assertTrue(ValidarIdentidadeUC.validarCPF("12345678909"));
+    }
+
+    @Test
+    void testValidarCPFInvalido() {
+        assertFalse(ValidarIdentidadeUC.validarCPF("11111111111"));
+        assertFalse(ValidarIdentidadeUC.validarCPF("123"));
     }
 }

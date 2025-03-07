@@ -14,7 +14,7 @@ public class ValidarEnderecoUC {
     private static final String URL = "https://api.opencagedata.com/geocode/v1/json";
     private static final String API_KEY = System.getenv("API_KEY_OPENCAGE_PESSOAL");
 
-    public boolean validarEndereco(String endereco) {
+    public static boolean validarEndereco(String endereco) {
         RestTemplate restTemplate = new RestTemplate();
 
         String uri = UriComponentsBuilder.fromHttpUrl(URL)

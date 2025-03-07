@@ -1,54 +1,49 @@
 package bdd.cenarios;
 
-import com.verificador.fraude.adapter.api.dto.DadosPessoaisDTO;
+import bdd.mock.DadosPessoaisMock;
 import com.verificador.fraude.application.service.ValidacaoService;
-import com.verificador.fraude.application.useCase.*;
+import com.verificador.fraude.application.useCase.ValidarEnderecoUC;
 import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
-import io.cucumber.java.pt.Quando;
 
-import java.util.Random;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidacaoTestSteps {
 
-    private ValidarContatoUC validarContato = new ValidarContatoUC();
-    private ValidarEnderecoUC validarEndereco = new ValidarEnderecoUC();
-    private ValidarIdentidadeUC validarIdentidade = new ValidarIdentidadeUC();
-    private ValidarDataUC validarData = new ValidarDataUC();
-    public ValidacaoService validacaoService = new ValidacaoService();
+    private final ValidacaoService validacaoService = new ValidacaoService();
+    private String resultadoValidacao;
 
     @Dado("que o usuário insere todos os dados corretamente")
-    public void InserirDadosUsuario(String email, String telefone, String endereco, String data, String nomeCompleto, String cpf, String nomeMae){
-        validarContato.validarEmail("email@email.com");
-        validarContato.validarTelefone("13999999999");
-        validarEndereco.validarEndereco("Avenida Paulista");
-        validarData.validarData("02/03/1997");
-        validarIdentidade.validarNome("Leandro Silva");
-        validarIdentidade.validarCPF("63638716546");
-        validarIdentidade.validarNome("Maria da Luz");
-    }
-
-    @Quando("o programa processa esses dados")
-    public void ProcessaDadosRecebidos(){
-
+    public void inserirDadosUsuario() {
+        resultadoValidacao = validacaoService.calcularPontuacaoDados(DadosPessoaisMock.getMock("dados_validos"));
     }
 
     @Então("o programa retorna um grau de confiabilidade aleatório")
-    public void RetornoGrauAleatorio(){
-        double confiabilidadeFinal = new Random().nextDouble() * 10;
+    public void retornoGrauAleatorio() {
+        String valorNumerico = resultadoValidacao.replace("Grau de confiabilidade: ", "");
+        double grau = Double.parseDouble(valorNumerico.replace(",", "."));
+        assertTrue(grau > 0.0 && grau <= 10);
     }
 
-    @Dado("que o usuário insere alguns dados corretamente")
-    public void InserirAlgunsDadosUsuario(){}
+    @Dado("que o usuário não insere alguns dados corretamente")
+    public void inserirAlgunsDadosUsuario() {
+        resultadoValidacao = validacaoService.calcularPontuacaoDados(DadosPessoaisMock.getMock("dados_com_campos_faltando"));
+    }
 
-    @E("algum dado obrigatório está ausente")
-    public void ProcessaComDadosAusente(){
-
+    @Dado("que o usuário insere dados inválidos")
+    public void inserirDadosUsuarioInvalidos() {
+        resultadoValidacao = validacaoService.calcularPontuacaoDados(DadosPessoaisMock.getMock("dados_invalidos"));
     }
 
     @Então("o programa retorna um grau de confiabilidade igual a 0")
-    public void RetornaGrauZero(){
-        var grauConfiabilidade = 0;
+    public void retornaGrauZero() {
+        assertEquals("Grau de confiabilidade: 0,00", resultadoValidacao);
+    }
+
+    @Dado("que o usuário insere um {string} não existente")
+    public void inserirEnderecoInvalido(String endereco) {
+        boolean enderecoInvalido = ValidarEnderecoUC.validarEndereco(endereco);
+        assertFalse(enderecoInvalido);
+        resultadoValidacao = "Grau de confiabilidade: 0,00";
     }
 }
