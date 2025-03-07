@@ -1,38 +1,24 @@
 package com.verificador.fraude.application.service;
 
-
 import com.verificador.fraude.adapter.api.dto.DadosPessoaisDTO;
-import com.verificador.fraude.application.useCase.ValidarContatoUC;
-import com.verificador.fraude.application.useCase.ValidarDataUC;
-import com.verificador.fraude.application.useCase.ValidarEnderecoUC;
-import com.verificador.fraude.application.useCase.ValidarIdentidadeUC;
-import org.springframework.stereotype.Service;
+import com.verificador.fraude.application.useCase.*;
 
+import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
 public class ValidacaoService {
 
-    public String calcularPontuacaoDados(DadosPessoaisDTO dadoPessoais){
+    public String calcularPontuacaoDados(DadosPessoaisDTO dadosPessoais) {
+        boolean valido = ValidarIdentidadeUC.validarNome(dadosPessoais.getNomeCompleto()) &&
+                ValidarIdentidadeUC.validarNome(dadosPessoais.getNomeMae()) &&
+                ValidarIdentidadeUC.validarCPF(dadosPessoais.getCpf()) &&
+                ValidarDataUC.validarData(dadosPessoais.getDataNascimento()) &&
+                ValidarContatoUC.validarEmail(dadosPessoais.getEmail()) &&
+                ValidarContatoUC.validarTelefone(dadosPessoais.getTelefone()) &&
+                ValidarEnderecoUC.validarEndereco(dadosPessoais.getEndereco());
 
-        ValidarIdentidadeUC validarIdentidade = new ValidarIdentidadeUC();
-        ValidarDataUC validarData = new ValidarDataUC();
-        ValidarContatoUC validarContato = new ValidarContatoUC();
-        ValidarEnderecoUC validarEndereco = new ValidarEnderecoUC();
-
-
-        if (!validarIdentidade.validarNome(dadoPessoais.getNomeCompleto()) ||
-                (!validarIdentidade.validarNome(dadoPessoais.getNomeMae()) ||
-                        (!validarData.validarData(dadoPessoais.getDataNascimento()) ||
-                                (!validarContato.validarEmail(dadoPessoais.getEmail()) ||
-                                        (!validarContato.validarTelefone(dadoPessoais.getTelefone()) ||
-                                                (!validarIdentidade.validarCPF(dadoPessoais.getCpf()) ||
-                                                        (!validarEndereco.validarEndereco(dadoPessoais.getEndereco())))))))){
-            return "Grau de confiabilidade: 0";
-        }
-
-
-        double confiabilidadeFinal = new Random().nextDouble() * 10;
+        double confiabilidadeFinal = valido ? new Random().nextDouble() * 10 : 0;
         return "Grau de confiabilidade: " + String.format("%.2f", confiabilidadeFinal);
     }
 }

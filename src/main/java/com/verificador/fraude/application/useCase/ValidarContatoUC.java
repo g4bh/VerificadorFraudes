@@ -4,7 +4,7 @@ import static com.verificador.fraude.domain.constants.Constants.*;
 
 public class ValidarContatoUC {
 
-    public boolean validarTelefone(String telefone) {
+    public static boolean validarTelefone(String telefone) {
         if (telefone == null) return false;
 
         telefone = telefone.replaceAll("\\D", "");
@@ -14,16 +14,16 @@ public class ValidarContatoUC {
         return telefone.length() == 11 && validaDDD(telefone);
     }
 
-    public boolean validarEmail(String email){
+    public static boolean validarEmail(String email){
         return email != null && email.matches(REGEX_EMAIL);
     }
 
-    private boolean validaDDD(String telefone){
+    private static boolean validaDDD(String telefone){
         String DDD = telefone.substring(2, 4);
         return DDD.matches(REGEX_DDD);
     }
 
-    public boolean validaDigitos(String telefone){
+    public static boolean validaDigitos(String telefone){
         return telefone.matches(REGEX_DIGITOS);
     }
 

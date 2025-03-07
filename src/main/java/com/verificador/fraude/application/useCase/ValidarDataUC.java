@@ -13,14 +13,14 @@ public class ValidarDataUC {
             DateTimeFormatter.ofPattern("dd/MM/yyyy")
     );
 
-    public boolean validarData(String dataNascimento){
+    public static boolean validarData(String dataNascimento){
         if (!verificaFormato(dataNascimento)){
             return false;
         }
         return true;
     }
 
-    private boolean verificaFormato(String dataNascimento) {
+    private static boolean verificaFormato(String dataNascimento) {
         for (DateTimeFormatter formato : FORMATOS_DATA) {
             try {
                 LocalDate data = LocalDate.parse(dataNascimento, formato);

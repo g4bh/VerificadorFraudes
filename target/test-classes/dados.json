@@ -1,0 +1,29 @@
+{
+  "dados_validos": {
+    "cpf":"856.405.118-42",
+    "nomeCompleto": "Antônio Santos",
+    "telefone": "15999999999",
+    "email": "antonio@gmail.com",
+    "dataNascimento": "26/02/2001",
+    "endereco": "Avenida Palmeiras",
+    "nomeMae": "Maria dos Santos"
+  },
+  "dados_com_campos_faltando": {
+    "cpf":"856.405.118-42",
+    "nomeCompleto": "Antônio Santos",
+    "telefone": null,
+    "email": "antonio@gmail.com",
+    "dataNascimento": "26/02/2001",
+    "endereco": "Avenida Palmeiras",
+    "nomeMae": null
+  },
+  "dados_invalidos": {
+    "cpf":"856.fff.118-42",
+    "nomeCompleto": "Antônio",
+    "telefone": "15999errado",
+    "email": "antonio@gmail.com",
+    "dataNascimento": "26/02/2001",
+    "endereco": "Avenida Palmeiras",
+    "nomeMae": "Maria dos Santos"
+  }
+}
